@@ -37,6 +37,23 @@ int main(void)
 
 	printf("%d\n", argc);
 
+	argv = malloc(sizeof(char *) * argc);
+
+	token = strtok(cmd_cpy, delim);
+
+	while(token)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delim);
+		i++;
+	}
+	argv[i] = NULL;
+
+	i = 0;
+	while (argv[i])
+		printf("%s\n", argv[i++]);
+	free(cmd), free(cmd_cpy), free(argv);	
+
 	return 0;
 
 }
